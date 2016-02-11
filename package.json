@@ -1,6 +1,6 @@
 {
   "name": "kanpai",
-  "version": "0.0.0-kanpai",
+  "version": "0.1.0",
   "description": ":beers: Kanpai to publish a new version of your module!",
   "license": "MIT",
   "repository": "egoist/kanpai",
@@ -32,7 +32,6 @@
     "colorful": "^2.1.0",
     "is-semver": "^1.0.0",
     "minimist": "^1.2.0",
-    "semver": "^5.1.0",
     "update-notifier": "^0.6.0"
   },
   "devDependencies": {
