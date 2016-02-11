@@ -1,4 +1,6 @@
-# kanpai [![NPM version](https://img.shields.io/npm/v/kanpai.svg)](https://npmjs.com/package/kanpai) [![NPM downloads](https://img.shields.io/npm/dm/kanpai.svg)](https://npmjs.com/package/kanpai) [![Build Status](https://img.shields.io/circleci/project/egoist/kanpai/master.svg)](https://circleci.com/gh/egoist/kanpai)
+<p align="center">
+  <img src="/media/kanpai.png"/>
+</p>
 
 > Kanpai to publish a new version of your module!
 
@@ -17,6 +19,10 @@ $ npm install -g kanpai
 $ kp
 $ kp [patch|minor|major|$version|pre$type]
 ```
+
+## Badges
+
+[![NPM version](https://img.shields.io/npm/v/kanpai.svg)](https://npmjs.com/package/kanpai) [![NPM downloads](https://img.shields.io/npm/dm/kanpai.svg)](https://npmjs.com/package/kanpai) [![Build Status](https://img.shields.io/circleci/project/egoist/kanpai/master.svg)](https://circleci.com/gh/egoist/kanpai)
 
 ## License
 
