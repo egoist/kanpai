@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+'use strict'
+
+const minimist = require('minimist')
+const isSemver = require('is-semver')
+const update = require('update-notifier')
+const pkg = require('./package')
+const publish = require('./lib/publish')
+require('colorful').toxic()
+
+const argv = minimist(process.argv.slice(2))
+
+update({pkg}).notify()
+
+// for all semantic version
+const allTypes = [
+	'patch',
+	'minor',
+	'major',
+ 	'premajor',
+	'preminor',
+	'prepatch',
+	'prerelease',
+	'from-git'
+]
+const type = argv._[0] || 'patch'
+
+if (isSemver(type) || allTypes.indexOf(type) > -1) {
+	publish(type)
+}
