@@ -2,6 +2,8 @@
 
 > Kanpai to publish a new version of your module!
 
+![screencast](/media/screencast.gif)
+
 ## Install
 
 ```
