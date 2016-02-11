@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/media/kanpai.png" width="240"/>
+  <img src="/media/kanpai.png" width="260"/>
 </p>
 
 <p align="center">
@@ -10,9 +10,9 @@
 
 > Kanpai to publish a new version of your module!
 
-![screencast](/media/screencast.gif)
-
 ## Install
+
+👉 [Screencast](/media/screencast.gif)
 
 ```
 $ npm install -g kanpai
