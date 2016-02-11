@@ -10,6 +10,14 @@
 
 > Kanpai to publish a new version of your module!
 
+## Motivation
+
+My major complaints about `npm publish` are:
+
+- `npm install` will also trigger `npm run prepublish`, see the [discussion](https://github.com/npm/npm/issues/3059). If you wanna run `npm test` in `prepublish` script it will also be emitted whenever you run `npm install`, which is unexpected.
+- I have to manually update the package version.
+- I have to manually create git tag.
+
 ## Install
 
 👉 [Screencast](/media/screencast.gif)
