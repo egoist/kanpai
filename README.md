@@ -8,8 +8,6 @@
 <a href="https://circleci.com/gh/egoist/kanpai"><img src="https://img.shields.io/circleci/project/egoist/kanpai/master.svg" alt="Build Status"></a>
 </p>
 
-> Kanpai to publish a new version of your module!
-
 ## Motivation
 
 My major complaints about `npm publish` are:
