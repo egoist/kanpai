@@ -26,5 +26,5 @@ const allTypes = [
 const type = argv._[0] || 'patch'
 
 if (isSemver(type) || allTypes.indexOf(type) > -1) {
-	publish(type)
+	publish(type, argv)
 }

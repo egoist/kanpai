@@ -30,6 +30,9 @@ $ npm install -g kanpai
 # default type is `patch`
 $ kp
 $ kp [patch|minor|major|$version|pre$type]
+
+# custom test command, equal to npm run test:other
+$ kp --test test:other
 ```
 
 ## License
