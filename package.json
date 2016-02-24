@@ -1,6 +1,6 @@
 {
   "name": "kanpai",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "description": ":beers: Kanpai to publish a new version of your module!",
   "license": "MIT",
   "repository": "egoist/kanpai",
