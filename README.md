@@ -33,6 +33,9 @@ $ kp [patch|minor|major|$version|pre$type]
 
 # custom test command, equal to npm run test:other
 $ kp --test test:other
+
+# only push to current working branch on remote
+$ kp --push-only
 ```
 
 ## License
