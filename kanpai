@@ -10,11 +10,32 @@ require('colorful').toxic()
 
 const argv = minimist(process.argv.slice(2), {
 	alias: {
-		t: 'test'
+		t: 'test',
+		v: 'version',
+		h: 'help',
+		p: 'push-only'
 	}
 })
 
 update({pkg}).notify()
+
+if (argv.version) {
+	console.log(pkg.version)
+	process.exit()
+}
+
+if (argv.help) {
+	console.log(`
+  Usage:
+    kp
+
+    -t/--test:         Custom test command
+    -p/--push-only:    Push to remote git server only
+    -v--version:       Output version number
+    -h/--help:         Output help infomation
+	`)
+	process.exit()
+}
 
 // for all semantic version
 const allTypes = [

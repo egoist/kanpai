@@ -16,6 +16,17 @@ My major complaints about `npm publish` are:
 - I have to manually update the package version.
 - I have to manually create git tag.
 
+## How it works
+
+**No black magic**. In [semantic-release](https://github.com/semantic-release/semantic-release) you don't have full control of project publish, `semantic-release` smartly analyze your commits and publish the corresponding new version.
+
+While `kanpai` is, following this procedure:
+
+- Run tests, `npm test` by default
+- Update package version, add git tag as well
+- Publish to NPM
+- Push to remote git server
+
 ## Install
 
 👉 [Screencast](/media/screencast.gif)
@@ -36,6 +47,14 @@ $ kp --test test:other
 
 # only push to current working branch on remote
 $ kp --push-only
+```
+
+A common workflow:
+
+```bash
+# after hack something...
+$ git commit -am "change the world"
+$ kp
 ```
 
 ## License
