@@ -56,7 +56,7 @@ $ kp -h
 
     -t/--test:         Custom test command
     -p/--push-only:    Push to remote git server only
-    -v--version:       Output version number
+    -v/--version:       Output version number
     -h/--help:         Output help infomation
 ```
 
