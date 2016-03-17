@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/media/kanpai.png" width="260"/>
+  <img src="media/kanpai.png" width="260"/>
 </p>
 
 <p align="center">
@@ -52,13 +52,14 @@ $ kp --push
 # more usages
 $ kp -h
 
-  Usage:
-    kp
+🍻 Kanpai to publish a new version of your module!
 
-    -t/--test:         Custom test command
-    -p/--push:    Push to remote git server only
-    -v/--version:       Output version number
-    -h/--help:         Output help infomation
+Usage:
+
+  -t/--test:         Custom test command
+  -p/--push:         Push to remote git server only
+  -v--version:       Output version number
+  -h/--help:         Output help infomation
 ```
 
 A common workflow:
