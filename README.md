@@ -46,7 +46,8 @@ $ kp [patch|minor|major|$version|pre$type]
 $ kp --test test:other
 
 # only push to current working branch on remote
-$ kp --push-only
+# after test
+$ kp --push
 
 # more usages
 $ kp -h
@@ -55,7 +56,7 @@ $ kp -h
     kp
 
     -t/--test:         Custom test command
-    -p/--push-only:    Push to remote git server only
+    -p/--push:    Push to remote git server only
     -v/--version:       Output version number
     -h/--help:         Output help infomation
 ```
