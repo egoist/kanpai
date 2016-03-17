@@ -32,7 +32,7 @@
   "dependencies": {
     "colorful": "^2.1.0",
     "cwd": "^0.9.1",
-    "fancy-hr": "0.0.2",
+    "figures": "^1.4.0",
     "is-semver": "^1.0.0",
     "log-symbols": "^1.0.2",
     "meow": "^3.7.0",
