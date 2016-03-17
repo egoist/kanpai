@@ -68,6 +68,18 @@ $ git commit -am "change the world"
 $ kp
 ```
 
+## Config
+
+You can config these properties in `package.json`:
+
+```
+{
+  "kanpai": {
+    "test": "lint" // custom test script => npm run lint
+  }
+}
+```
+
 ## License
 
 MIT © [EGOIST](https://github.com/egoist)

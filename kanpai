@@ -1,55 +1,48 @@
 #!/usr/bin/env node
 'use strict'
 
-const minimist = require('minimist')
+const meow = require('meow')
 const isSemver = require('is-semver')
 const update = require('update-notifier')
-const pkg = require('./package')
 const publish = require('./lib/publish')
 require('colorful').toxic()
 
-const argv = minimist(process.argv.slice(2), {
-	alias: {
-		t: 'test',
-		v: 'version',
-		h: 'help',
-		p: 'push-only'
-	}
+const cli = meow(`
+${`Usage:`.bold}
+
+  -t/--test:         Custom test command
+  -p/--push:         Push to remote git server only
+  -v--version:       Output version number
+  -h/--help:         Output help infomation
+`, {
+  alias: {
+    t: 'test',
+    v: 'version',
+    h: 'help',
+    p: 'push'
+  }
 })
 
-update({pkg}).notify()
+update({pkg: cli.pkg}).notify()
 
-if (argv.version) {
-	console.log(pkg.version)
-	process.exit()
-}
-
-if (argv.help) {
-	console.log(`
-  Usage:
-    kp
-
-    -t/--test:         Custom test command
-    -p/--push-only:    Push to remote git server only
-    -v--version:       Output version number
-    -h/--help:         Output help infomation
-	`)
-	process.exit()
+if (cli.flags.version) {
+  console.log(cli.pkg.version)
+  process.exit()
 }
 
 // for all semantic version
 const allTypes = [
-	'patch',
-	'minor',
-	'major',
- 	'premajor',
-	'preminor',
-	'prepatch',
-	'prerelease',
-	'from-git'
+  'patch',
+  'minor',
+  'major',
+  'premajor',
+  'preminor',
+  'prepatch',
+  'prerelease',
+  'from-git'
 ]
-const type = argv._[0] || 'patch'
+const type = cli.input[0] || 'patch'
 
 if (isSemver(type) || allTypes.indexOf(type) > -1) {
-	publish(type, argv)
+  publish(type, cli)
 }

@@ -1,7 +1,7 @@
 {
   "name": "kanpai",
   "version": "0.3.0",
-  "description": ":beers: Kanpai to publish a new version of your module!",
+  "description": "🍻  Kanpai to publish a new version of your module!",
   "license": "MIT",
   "repository": "egoist/kanpai",
   "author": {
@@ -17,7 +17,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "xo"
+    "test": "xo",
+    "testen": "testen"
   },
   "files": [
     "kanpai",
@@ -30,9 +31,11 @@
   ],
   "dependencies": {
     "colorful": "^2.1.0",
+    "cwd": "^0.9.1",
     "fancy-hr": "0.0.2",
     "is-semver": "^1.0.0",
     "log-symbols": "^1.0.2",
+    "meow": "^3.7.0",
     "minimist": "^1.2.0",
     "update-notifier": "^0.6.0"
   },
@@ -41,5 +44,8 @@
   },
   "xo": {
     "semicolon": false
+  },
+  "kanpai": {
+    "test": "testen"
   }
 }
