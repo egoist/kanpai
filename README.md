@@ -80,6 +80,10 @@ You can config these properties in `package.json`:
 }
 ```
 
+## Screenshots
+
+![preview](https://ooo.0o0.ooo/2016/03/17/56ea4ba76710e.png)
+
 ## License
 
 MIT © [EGOIST](https://github.com/egoist)
