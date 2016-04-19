@@ -22,7 +22,7 @@ My major complaints about `npm publish` are:
 
 While `kanpai` is, following this procedure:
 
-- Check git status, see if you have commited the changes and if the remote history differs.
+- Check git status, see if you have committed the changes and if the remote history differs.
 - Run tests, `npm test` by default
 - Update package version, add git tag as well
 - Publish to NPM
