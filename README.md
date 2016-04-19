@@ -84,6 +84,8 @@ You can config these properties in `package.json`:
 
 ## Screenshots
 
+Protip: Use [testen](https://github.com/egoist/testen) to mock a local version of [TravisCI](https://travis-ci.org/), which can be used for tesing against multiple versions of Node.js.
+
 ![preview](https://ooo.0o0.ooo/2016/03/17/56ea4ba76710e.png)
 
 ## License
