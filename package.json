@@ -1,6 +1,6 @@
 {
   "name": "kanpai",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "🍻  Kanpai to publish a new version of your module!",
   "license": "MIT",
   "repository": "egoist/kanpai",
@@ -46,7 +46,10 @@
   "xo": {
     "semicolon": false,
     "rules": {
-      "operator-linebreak": [2, "before"]
+      "operator-linebreak": [
+        2,
+        "before"
+      ]
     }
   },
   "kanpai": {
