@@ -44,7 +44,10 @@
     "xo": "^0.12.1"
   },
   "xo": {
-    "semicolon": false
+    "semicolon": false,
+    "rules": {
+      "operator-linebreak": [2, "before"]
+    }
   },
   "kanpai": {
     "test": "testen"
