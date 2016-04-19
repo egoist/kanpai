@@ -71,6 +71,8 @@ $ git commit -am "change the world"
 $ kp
 ```
 
+**Protip:** If you see `fatal: no upstream configured for branch 'master'`, you can run `git branch --set-upstream-to=origin/master master` or `git push -u origin master` to fix it.
+
 ## Config
 
 You can config these properties in `package.json`:
