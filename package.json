@@ -30,7 +30,9 @@
     "publish"
   ],
   "dependencies": {
+    "cac": "^1.0.0",
     "colorful": "^2.1.0",
+    "configstore": "^2.0.0",
     "cross-spawn": "^2.2.3",
     "cwd": "^0.9.1",
     "figures": "^1.4.0",
@@ -38,6 +40,7 @@
     "log-symbols": "^1.0.2",
     "meow": "^3.7.0",
     "minimist": "^1.2.0",
+    "text-table": "^0.2.0",
     "update-notifier": "^0.6.0"
   },
   "devDependencies": {

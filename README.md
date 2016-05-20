@@ -75,12 +75,27 @@ $ kp
 
 ## Config
 
-You can config these properties in `package.json`:
+You can use command-line to set and get config globally:
+
+```bash
+$ kp get
+$ kp get testScript
+
+# update testScript
+$ kp set testScript tester
+
+# update the commit message when running `npm version `
+# %s will be replaced by version number, eg: 0.1.0
+$ kp set commitMessage "Release version %s"
+```
+
+You can config these properties in `package.json` for a single project:
 
 ```
 {
   "kanpai": {
-    "test": "lint" // custom test script => npm run lint
+    "testScript": "lint", // custom test script => npm run lint
+    "commitMessage": "Release version %s"
   }
 }
 ```
