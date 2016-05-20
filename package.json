@@ -34,7 +34,6 @@
     "colorful": "^2.1.0",
     "configstore": "^2.0.0",
     "cross-spawn": "^2.2.3",
-    "cwd": "^0.9.1",
     "figures": "^1.4.0",
     "is-semver": "^1.0.0",
     "log-symbols": "^1.0.2",
