@@ -6,7 +6,7 @@ if test -n "$(git status --porcelain)"; then
 fi
 
 if ! git fetch --quiet 2>/dev/null; then
-	echo 'There was a problem fetching your branch.' >&2;
+	echo 'There was a problem fetching your branch. Run `git fetch` to see more...' >&2;
 	exit 128;
 fi
 

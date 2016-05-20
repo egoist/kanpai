@@ -61,7 +61,7 @@ cli.command('set', function () {
   }
 })
 
-cli.command('*', function () {
+cli.command('*', function* () {
   // for all semantic version
   const allTypes = [
     'patch',
@@ -76,7 +76,7 @@ cli.command('*', function () {
   const type = this.input[0] || 'patch'
 
   if (isSemver(type) || allTypes.indexOf(type) > -1) {
-    publish(type, this, cli.pkg)
+    yield publish(type, this, cli.pkg)
   } else {
     console.log('Invalid version.'.red)
   }

@@ -31,7 +31,9 @@
   ],
   "dependencies": {
     "cac": "^1.0.0",
+    "co": "^4.6.0",
     "colorful": "^2.1.0",
+    "commits-between": "^0.2.0",
     "configstore": "^2.0.0",
     "cross-spawn": "^2.2.3",
     "figures": "^1.4.0",
