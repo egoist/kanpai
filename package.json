@@ -17,7 +17,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "xo",
+    "test": "xo lib/*.js",
     "testen": "testen"
   },
   "files": [
@@ -46,6 +46,7 @@
     "xo": "^0.12.1"
   },
   "xo": {
+    "space": 2,
     "semicolon": false,
     "rules": {
       "operator-linebreak": [
