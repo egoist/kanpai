@@ -53,14 +53,20 @@ $ kp --push
 # more usages
 $ kp -h
 
-🍻 Kanpai to publish a new version of your module!
+🍻  Kanpai to publish a new version of your module!
 
 Usage:
 
-  -t/--test:         Custom test command
-  -p/--push:         Push to remote git server only
-  -v--version:       Output version number
-  -h/--help:         Output help infomation
+Commands:
+  get [key]:          Get one or all config
+  set <key> [value]:  Set a property in config to a given value, set to be null if no value shown
+
+Options:
+  -m/--message:       Commit message when running `npm version`
+  -t/--test:          Custom test command for once
+  -p/--push:          Push to remote git server only
+  -v--version:        Output version number
+  -h/--help:          Output help infomation
 ```
 
 A common workflow:
