@@ -25,8 +25,6 @@ const cli = cac(`
   alias: {
     m: 'message',
     t: 'test',
-    v: 'version',
-    h: 'help',
     p: 'push'
   }
 })
