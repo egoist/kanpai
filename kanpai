@@ -16,6 +16,7 @@ const cli = cac(`
     set <key> [value]:  Set a property in config to a given value, set to be null if no value shown
 
   Options:
+    --tag:              The tag of the publish, used when running \`npm publish\`
     -m/--message:       Commit message when running \`npm version\`
     -t/--test:          Custom test command for once
     -p/--push:          Push to remote git server only
