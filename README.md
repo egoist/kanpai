@@ -85,10 +85,10 @@ You can use command-line to set and get config globally:
 
 ```bash
 $ kp get
-$ kp get testScript
+$ kp get test
 
-# update testScript
-$ kp set testScript tester
+# update test
+$ kp set test custom-test-script
 
 # update the commit message when running `npm version `
 # %s will be replaced by version number, eg: 0.1.0
@@ -100,7 +100,7 @@ You can config these properties in `package.json` for a single project:
 ```
 {
   "kanpai": {
-    "testScript": "lint", // custom test script => npm run lint
+    "test": "lint", // custom test script => npm run lint
     "commitMessage": "Release version %s"
   }
 }
