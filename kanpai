@@ -19,7 +19,8 @@ const cli = cac(`
     --next:             Short-hand for publishing with a tag, equal to --tag next
     --tag:              The tag of the publish, used when running \`npm publish\`
     -m/--message:       Commit message when running \`npm version\`
-    -t/--test:          Custom test command for once
+    -t/--test:          Custom npm script for testing
+    --skip-test:        Skip test
     -p/--push:          Push to remote git server only
     -v--version:        Output version number
     -h/--help:          Output help infomation
