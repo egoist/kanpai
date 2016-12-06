@@ -30,10 +30,11 @@ While `kanpai` is, following this procedure:
 
 ## Install
 
-👉 [Screencast](/media/screencast.gif)
-
-```
+```bash
 $ npm install -g kanpai
+
+# or use yarn
+$ yarn global add kanpai
 ```
 
 ## Usage
@@ -112,9 +113,9 @@ Two options:
 a) `git branch --set-upstream-to=origin/master master` and then run `git push`<br>
 b) `git push -u origin master`
 
-## Screenshots
+## Preview
 
-![preview](https://ooo.0o0.ooo/2016/03/17/56ea4ba76710e.png)
+[![asciicast](https://asciinema.org/a/aor622qgr9vplsq48rmkxzqxn.png)](https://asciinema.org/a/aor622qgr9vplsq48rmkxzqxn)
 
 ## License
 
