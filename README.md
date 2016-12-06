@@ -23,7 +23,7 @@ My major complaints about `npm publish` are:
 While `kanpai` is, following this procedure:
 
 - Check git status, see if you have committed the changes and if the remote history differs.
-- Run tests, `npm test` by default
+- Run tests, `npm test` by default, or `npm run kanpai` if this exists
 - Update package version, add git tag as well
 - Publish to NPM
 - Push to remote git server
@@ -50,23 +50,11 @@ $ kp --test test:other
 # after test
 $ kp --push
 
+# skip test
+$ kp --skip-test
+
 # more usages
 $ kp -h
-
-🍻  Kanpai to publish a new version of your module!
-
-Usage:
-
-Commands:
-  get [key]:          Get one or all config
-  set <key> [value]:  Set a property in config to a given value, set to be null if no value shown
-
-Options:
-  -m/--message:       Commit message when running `npm version`
-  -t/--test:          Custom test command for once
-  -p/--push:          Push to remote git server only
-  -v--version:        Output version number
-  -h/--help:          Output help infomation
 ```
 
 A common workflow:
@@ -76,8 +64,6 @@ A common workflow:
 $ git commit -am "change the world"
 $ kp
 ```
-
-**Protip:** If you see `fatal: no upstream configured for branch 'master'`, you can run `git branch --set-upstream-to=origin/master master` or `git push -u origin master` to fix it.
 
 ## Config
 
@@ -106,9 +92,27 @@ You can config these properties in `package.json` for a single project:
 }
 ```
 
-## Screenshots
+## FAQ
 
-Protip: Use [testen](https://github.com/egoist/testen) to mock a local version of [TravisCI](https://travis-ci.org/), which can be used for tesing against multiple versions of Node.js.
+### What if the `❯❯❯❯❯ PUBLISH` failed?
+
+<img src="./media/faq1.png" alt="failed" width="500">
+
+You can manually publish it when you fixed the issue:
+
+```bash
+npm publish
+git push --follow-tags
+```
+
+### fatal: no upstream configured for branch 'master'
+
+Two options:
+
+a) `git branch --set-upstream-to=origin/master master` and then run `git push`<br>
+b) `git push -u origin master`
+
+## Screenshots
 
 ![preview](https://ooo.0o0.ooo/2016/03/17/56ea4ba76710e.png)
 
