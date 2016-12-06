@@ -81,7 +81,8 @@ cli.command('*', function* () {
   if (isSemver(type) || allTypes.indexOf(type) > -1) {
     yield publish(type, this)
   } else {
-    console.log('Invalid version.'.red)
+    console.log('> Invalid version.'.red)
+    process.exit(1)
   }
 })
 
