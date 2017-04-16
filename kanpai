@@ -21,6 +21,7 @@ const cli = cac(`
     -m/--message:       Commit message when running \`npm version\`
     -t/--test:          Custom npm script for testing
     --skip-test:        Skip test
+    --any-branch:       Allow to publish on any branch
     -p/--push:          Push to remote git server only
     -v--version:        Output version number
     -h/--help:          Output help infomation
