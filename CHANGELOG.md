@@ -1,3 +1,7 @@
+## Unreleased
+
+- Replace `%s` in commit message with actual version number.
+
 ## v0.9.1
 
 - Require version to be specified to prevent accidentally running `kp`

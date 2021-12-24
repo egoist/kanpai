@@ -160,7 +160,7 @@ export async function publish(
     );
     await runCommandWithSideEffects(
       "git",
-      ["commit", "-m", commitMessage],
+      ["commit", "-m", commitMessage.replace("%s", newVersion)],
       options.dryRun
     );
     await runCommandWithSideEffects(
