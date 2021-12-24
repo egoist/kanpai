@@ -1,4 +1,4 @@
-## Unreleased
+## v0.9.2
 
 - Replace `%s` in commit message with actual version number.
 
