@@ -128,6 +128,7 @@ export async function publish(
       npmOptions.push("--tag", options.channel);
     }
     await runCommandWithSideEffects("npm", npmOptions, options.dryRun);
+    // TODO: revert the commit and git tag when publish failed
   }
 
   hr("PUSH");
