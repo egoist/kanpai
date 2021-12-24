@@ -10,7 +10,7 @@ import { config } from "./config";
 
 function hr(text: string) {
   const char = colors.green(figures.pointer);
-  console.log(`${char.repeat(5)} ${text}`);
+  console.log(`${char.repeat(5)} ${colors.bold(text)}`);
 }
 
 function failed(status = 1) {
@@ -79,9 +79,9 @@ export async function publish(
     failed();
   }
 
-  hr("CHANGELOG");
   const latestTag = await getLatestTag();
   if (latestTag) {
+    hr(`COMMITS SINCE ${latestTag}`);
     const commits = await commitsBetween({ from: latestTag });
     if (commits.length === 0) {
       console.log(
@@ -110,7 +110,7 @@ export async function publish(
     const defaultTest = kanpai.scripts && kanpai.scripts.kanpai;
     const testCommand =
       options.test || kanpai.test || defaultTest || config.get("test");
-    execa("npm", ["run", testCommand], { stdio: "inherit" });
+    await execa("npm", ["run", testCommand], { stdio: "inherit" });
   }
 
   if (!options.pushOnly) {
