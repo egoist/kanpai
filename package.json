@@ -1,60 +1,52 @@
 {
   "name": "kanpai",
   "version": "0.8.2",
-  "description": "🍻  Kanpai to publish a new version of your module!",
+  "description": "🍻  Use Kanpai to publish a new version of your module!",
   "license": "MIT",
   "repository": "egoist/kanpai",
   "author": {
     "name": "EGOIST",
     "email": "0x142857@gmail.com",
-    "url": "github.com/egoist"
+    "url": "https://egoist.sh"
   },
   "bin": {
     "kanpai": "kanpai",
     "kp": "kanpai"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
-    "test": "xo lib/*.js"
+    "test": "echo lol",
+    "prepublishOnly": "npm run build",
+    "build": "tsup"
   },
   "files": [
-    "kanpai",
-    "lib"
+    "dist"
   ],
   "keywords": [
     "cli-app",
     "cli",
     "publish"
   ],
-  "dependencies": {
-    "cac": "^1.0.0",
-    "co": "^4.6.0",
-    "colorful": "^2.1.0",
-    "commits-between": "^0.2.0",
-    "configstore": "^2.0.0",
-    "cross-spawn": "^2.2.3",
-    "ensure-git": "^0.1.0",
-    "figures": "^1.4.0",
-    "is-semver": "^1.0.0",
-    "log-symbols": "^1.0.2",
-    "meow": "^3.7.0",
-    "minimist": "^1.2.0",
-    "text-table": "^0.2.0",
-    "update-notifier": "^0.6.0"
-  },
   "devDependencies": {
-    "xo": "^0.12.1"
-  },
-  "xo": {
-    "space": 2,
-    "semicolon": false,
-    "rules": {
-      "operator-linebreak": [
-        2,
-        "before"
-      ]
-    }
+    "update-notifier": "^5.1.0",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/text-table": "^0.2.2",
+    "@types/update-notifier": "^5.1.0",
+    "cac": "^6.7.12",
+    "colorette": "^2.0.16",
+    "commits-between": "^0.2.0",
+    "conf": "^10.1.1",
+    "configstore": "^6.0.0",
+    "ensure-git": "^0.1.0",
+    "env-paths": "^3.0.0",
+    "execa": "^6.0.0",
+    "figures": "^4.0.0",
+    "is-semver": "^1.0.10",
+    "log-symbols": "^5.1.0",
+    "text-table": "^0.2.0",
+    "tsup": "^5.11.7",
+    "typescript": "^4.5.4"
   }
 }

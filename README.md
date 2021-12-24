@@ -8,14 +8,6 @@
 <a href="https://circleci.com/gh/egoist/kanpai"><img src="https://img.shields.io/circleci/project/egoist/kanpai/master.svg" alt="Build Status"></a>
 </p>
 
-## Motivation
-
-My major complaints about `npm publish` are:
-
-- `npm install` will also trigger `npm run prepublish`, see the [discussion](https://github.com/npm/npm/issues/3059). If you wanna run `npm test` in `prepublish` script it will also be emitted whenever you run `npm install`, which is unexpected.
-- I have to manually update the package version.
-- I have to manually create git tag.
-
 ## How it works
 
 **No black magic**. In [semantic-release](https://github.com/semantic-release/semantic-release) you don't have full control of project publish, `semantic-release` smartly analyze your commits and publish the corresponding new version.
@@ -48,10 +40,10 @@ $ kp [patch|minor|major|$version|pre$type]
 $ kp --test test:other
 
 # only push to current working branch on remote
-# after test
-$ kp --push
+# after runing test script
+$ kp --push-only
 
-# skip test
+# skip test script
 $ kp --skip-test
 
 # more usages
