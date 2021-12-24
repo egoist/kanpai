@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { cac } from "cac";
-import isSemver from "is-semver";
 import table from "text-table";
 import * as colors from "colorette";
+import semver from "semver";
 import { publish } from "./publish";
 import { config } from "./config";
 import { version } from "../package.json";
@@ -43,7 +43,7 @@ cli
       "from-git",
     ];
 
-    if (isSemver(version) || allTypes.indexOf(version) > -1) {
+    if (semver.valid(version) || allTypes.indexOf(version) > -1) {
       await publish(version, options);
     } else {
       console.log(colors.red("> Invalid version."));

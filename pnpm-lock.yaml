@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/cross-spawn': ^6.0.2
+  '@types/semver': ^7.3.9
   '@types/text-table': ^0.2.2
   '@types/update-notifier': ^5.1.0
   cac: ^6.7.12
@@ -13,15 +14,17 @@ specifiers:
   env-paths: ^3.0.0
   execa: ^6.0.0
   figures: ^4.0.0
-  is-semver: ^1.0.10
   log-symbols: ^5.1.0
+  semver: ^7.3.5
   text-table: ^0.2.0
   tsup: ^5.11.7
   typescript: ^4.5.4
   update-notifier: ^5.1.0
+  write-pkg: ^5.0.0
 
 devDependencies:
   '@types/cross-spawn': 6.0.2
+  '@types/semver': 7.3.9
   '@types/text-table': 0.2.2
   '@types/update-notifier': 5.1.0
   cac: 6.7.12
@@ -33,12 +36,13 @@ devDependencies:
   env-paths: 3.0.0
   execa: 6.0.0
   figures: 4.0.0
-  is-semver: 1.0.10
   log-symbols: 5.1.0
+  semver: 7.3.5
   text-table: 0.2.0
   tsup: 5.11.7_typescript@4.5.4
   typescript: 4.5.4
   update-notifier: 5.1.0
+  write-pkg: 5.0.0
 
 packages:
 
@@ -87,6 +91,10 @@ packages:
 
   /@types/node/17.0.4:
     resolution: {integrity: sha512-6xwbrW4JJiJLgF+zNypN5wr2ykM9/jHcL7rQ8fZe2vuftggjzZeRSM4OwRc6Xk8qWjwJ99qVHo/JgOGmomWRog==}
+    dev: true
+
+  /@types/semver/7.3.9:
+    resolution: {integrity: sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ==}
     dev: true
 
   /@types/text-table/0.2.2:
@@ -436,6 +444,11 @@ packages:
 
   /defer-to-connect/1.1.3:
     resolution: {integrity: sha512-0ISdNousHvZT2EiFlZeZAHBUvSxmKswVCEf8hW7KWgG4a8MVEu/3Vb6uWYozkjylyCxe0JBIiRB1jV45S70WVQ==}
+    dev: true
+
+  /detect-indent/7.0.0:
+    resolution: {integrity: sha512-/6kJlmVv6RDFPqaHC/ZDcU8bblYcoph2dUQ3kB47QqhkUEqXe3VZPELK9BaEMrC73qu+wn0AQ7iSteceN+yuMw==}
+    engines: {node: '>=12.20'}
     dev: true
 
   /dir-glob/3.0.1:
@@ -1000,10 +1013,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /is-semver/1.0.10:
-    resolution: {integrity: sha512-rKmdhbrrgr9VOJJdPrsO7cTYYYmDbbk8h7zjE7upRPT++oDh6jtL7m9zmOgHlUZgrTPfgJ0n08X5OZK9xS9dFg==}
-    dependencies:
-      semver: 5.7.1
+  /is-plain-obj/4.0.0:
+    resolution: {integrity: sha512-NXRbBtUdBioI73y/HmOhogw/U5msYPC9DAtGkJXeFcFWSFZw0mCUsPxk/snTuJHzNKA8kLBK4rH97RMB1BfCXw==}
+    engines: {node: '>=12'}
     dev: true
 
   /is-stream/1.1.0:
@@ -1480,11 +1492,6 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /semver/5.7.1:
-    resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
-    hasBin: true
-    dev: true
-
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
@@ -1517,6 +1524,13 @@ packages:
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+    dev: true
+
+  /sort-keys/5.0.0:
+    resolution: {integrity: sha512-Pdz01AvCAottHTPQGzndktFNdbRA75BgOfeT1hH+AMnJFv8lynkPi42rfeEhpx1saTEI3YNMWxfqu0sFD1G8pw==}
+    engines: {node: '>=12'}
+    dependencies:
+      is-plain-obj: 4.0.0
     dev: true
 
   /source-map/0.7.3:
@@ -1707,6 +1721,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /type-fest/2.8.0:
+    resolution: {integrity: sha512-O+V9pAshf9C6loGaH0idwsmugI2LxVNR7DtS40gVo2EXZVYFgz9OuNtOhgHLdHdapOEWNdvz9Ob/eeuaWwwlxA==}
+    engines: {node: '>=12.20'}
+    dev: true
+
   /typedarray-to-buffer/3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
@@ -1812,6 +1831,25 @@ packages:
       is-typedarray: 1.0.0
       signal-exit: 3.0.6
       typedarray-to-buffer: 3.1.5
+    dev: true
+
+  /write-json-file/5.0.0:
+    resolution: {integrity: sha512-ddSsCLa4aQ3kI21BthINo4q905/wfhvQ3JL3774AcRjBaiQmfn5v4rw77jQ7T6CmAit9VOQO+FsLyPkwxoB1fw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      detect-indent: 7.0.0
+      is-plain-obj: 4.0.0
+      sort-keys: 5.0.0
+      write-file-atomic: 3.0.3
+    dev: true
+
+  /write-pkg/5.0.0:
+    resolution: {integrity: sha512-ihflUwZ8WvVcXD2uhk4JAAe5+x9FT+0n4Z5b/OMZXBG8/hXCvSQXTYDf9raox0aqJGWRBipIE4rWSi6aCaiebw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      sort-keys: 5.0.0
+      type-fest: 2.8.0
+      write-json-file: 5.0.0
     dev: true
 
   /xdg-basedir/4.0.0:

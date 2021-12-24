@@ -30,8 +30,8 @@
     "publish"
   ],
   "devDependencies": {
-    "update-notifier": "^5.1.0",
     "@types/cross-spawn": "^6.0.2",
+    "@types/semver": "^7.3.9",
     "@types/text-table": "^0.2.2",
     "@types/update-notifier": "^5.1.0",
     "cac": "^6.7.12",
@@ -43,10 +43,12 @@
     "env-paths": "^3.0.0",
     "execa": "^6.0.0",
     "figures": "^4.0.0",
-    "is-semver": "^1.0.10",
     "log-symbols": "^5.1.0",
+    "semver": "^7.3.5",
     "text-table": "^0.2.0",
     "tsup": "^5.11.7",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "update-notifier": "^5.1.0",
+    "write-pkg": "^5.0.0"
   }
 }

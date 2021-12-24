@@ -1,12 +1,16 @@
-import Path from "path";
+import fs from "fs";
+import path from "path";
 import symbols from "log-symbols";
 import figures from "figures";
 import { execa } from "execa";
 import commitsBetween from "commits-between";
 import table from "text-table";
 import * as colors from "colorette";
+import semver from "semver";
+import { writePackage } from "write-pkg";
 import { ensureGit } from "./ensure-git";
 import { config } from "./config";
+import { updateChangeLog } from "./changelog";
 
 function hr(text: string) {
   const char = colors.green(figures.pointer);
@@ -33,13 +37,16 @@ async function getLatestTag(): Promise<string | null> {
   }
 }
 
-function readKanpai() {
-  try {
-    const pkg = require(Path.join(process.cwd(), "package.json"));
-    return (pkg && pkg.kanpai) || {};
-  } catch (err) {
-    return {};
+function readPkg() {
+  const filepath = path.join(process.cwd(), "package.json");
+  if (!fs.existsSync(filepath)) {
+    throw new Error("Could not find package.json");
   }
+  const content = fs.readFileSync(filepath, "utf8");
+  return {
+    path: filepath,
+    data: JSON.parse(content),
+  };
 }
 
 function runCommandWithSideEffects(
@@ -67,7 +74,8 @@ export async function publish(
     dryRun?: boolean;
   }
 ) {
-  const kanpai = readKanpai();
+  const pkg = readPkg();
+  const kanpai = pkg.data.kanpai || {};
   hr("CHECK GIT");
   try {
     await ensureGit({
@@ -116,9 +124,48 @@ export async function publish(
   if (!options.pushOnly) {
     hr("VERSION");
     const commitMessage = options.commitMessage || config.get("commitMessage");
+    const newVersion =
+      semver.valid(type) ||
+      semver.inc(
+        pkg.data.version,
+        type as any,
+        options.channel === "latest" ? "" : options.channel
+      );
+    if (!newVersion) {
+      console.error(
+        colors.red(`Could not bump version to ${type} from ${pkg.data.version}`)
+      );
+      return failed();
+    }
+
+    console.log(`Next version: ${newVersion}`);
+
+    // Update version in package.json
+    if (!options.dryRun) {
+      const newPkg = { ...pkg.data };
+      newPkg.version = newVersion;
+      await writePackage(pkg.path, newPkg);
+    }
+
+    // Update changelog file
+    if (!options.dryRun) {
+      updateChangeLog(newVersion);
+    }
+
+    // Commit and tag
     await runCommandWithSideEffects(
-      "npm",
-      ["version", type, "-m", commitMessage],
+      "git",
+      ["add", "package.json", "CHANGELOG.md"],
+      options.dryRun
+    );
+    await runCommandWithSideEffects(
+      "git",
+      ["commit", "-m", commitMessage],
+      options.dryRun
+    );
+    await runCommandWithSideEffects(
+      "git",
+      ["tag", `v${newVersion}`],
       options.dryRun
     );
 
