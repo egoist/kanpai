@@ -21,7 +21,16 @@ cli
   )
   .option("-c, --channel <channel>", "Release channel (defaults to `latest`)")
   .option("--dry-run", "Run the command without publishing or pushing")
-  .action(async (version = "patch", options) => {
+  .action(async (version, options) => {
+    if (!version) {
+      console.log(
+        colors.red(
+          "> Please specify a version to release, e.g. patch, major or 2.3.4"
+        )
+      );
+
+      process.exit(1);
+    }
     // for all semantic version
     const allTypes = [
       "patch",
