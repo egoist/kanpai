@@ -9,7 +9,7 @@ export const updateChangeLog = (newVersion: string) => {
 
   fs.writeFileSync(
     FILE_NAME,
-    content.replace(/^##\s+Unreleased$/m, `## v${newVersion}`),
+    content.replace(/^##\s+Unreleased$/m, `## ${newVersion}`),
     "utf8"
   );
 };

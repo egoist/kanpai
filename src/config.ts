@@ -3,7 +3,7 @@ import envPaths from "env-paths";
 import fs from "fs";
 import { defineConfig } from "tsup";
 
-const defaultConfig = { commitMessage: "Release v%s", test: "test" };
+const defaultConfig = { commitMessage: "Release %s", test: "test" };
 
 const configDir = envPaths("kanpai").config;
 const configFile = path.join(configDir, "config.json");
