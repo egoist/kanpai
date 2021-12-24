@@ -10,11 +10,11 @@
     "url": "https://egoist.sh"
   },
   "bin": {
-    "kanpai": "kanpai",
-    "kp": "kanpai"
+    "kanpai": "./dist/cli.js",
+    "kp": "./dist/cli.js"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "test": "echo lol",
