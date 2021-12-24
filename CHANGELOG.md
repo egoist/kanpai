@@ -1,4 +1,4 @@
-## Unreleased
+## 0.9.4
 
 - Remove `v` prefix from default version number in CHANGELOG.md
 
