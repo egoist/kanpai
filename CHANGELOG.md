@@ -1,3 +1,7 @@
+## Unreleased
+
+- Make sure git push tags too
+
 ## v0.9.2
 
 - Replace `%s` in commit message with actual version number.

@@ -165,7 +165,7 @@ export async function publish(
     );
     await runCommandWithSideEffects(
       "git",
-      ["tag", `v${newVersion}`],
+      ["tag", `v${newVersion}`, `-m`, `v${newVersion}`],
       options.dryRun
     );
 
