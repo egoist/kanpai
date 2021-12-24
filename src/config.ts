@@ -1,15 +1,21 @@
 import path from "path";
 import envPaths from "env-paths";
 import fs from "fs";
+import { defineConfig } from "tsup";
+
+const defaultConfig = { commitMessage: "Release v%s", test: "test" };
 
 const configDir = envPaths("kanpai").config;
 const configFile = path.join(configDir, "config.json");
 
 const readConfig = () => {
   if (!fs.existsSync(configFile)) {
-    return {};
+    return { ...defaultConfig };
   }
-  return JSON.parse(fs.readFileSync(configFile, "utf8"));
+  return {
+    ...defineConfig,
+    ...JSON.parse(fs.readFileSync(configFile, "utf8")),
+  };
 };
 
 const createConfig = () => {
