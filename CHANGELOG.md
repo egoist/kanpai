@@ -1,4 +1,4 @@
-## Unreleased
+## v0.9.3
 
 - Make sure git push tags too
 
