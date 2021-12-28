@@ -11,7 +11,7 @@ export const updateChangeLog = (newVersion: string) => {
     FILE_NAME,
     content.replace(
       /^##\s+Unreleased$/m,
-      `## Unreleased\n\n\n ## ${newVersion}`
+      `## Unreleased\n\n\n## ${newVersion}`
     ),
     "utf8"
   );
