@@ -27,10 +27,7 @@ async function getLatestTag(): Promise<string | null> {
     const { stdout } = await execa("git", ["describe", "--abbrev=0", "--tags"]);
     return stdout;
   } catch (error: any) {
-    if (
-      error.stdout &&
-      error.stdout.includes("fatal: No names found, cannot describe anything")
-    ) {
+    if (error.stderr && error.stderr.includes("fatal: No tags can describe")) {
       return null;
     }
     throw error;
