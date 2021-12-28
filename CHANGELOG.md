@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+ ## 0.9.5
+
 - Fix first release
 - Prepend `## Unreleased` to the top of the changelog
 
