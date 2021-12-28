@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+ ## 0.9.6
+
 - Fix changelog heading
 
 ## 0.9.5
