@@ -1,7 +1,8 @@
 ## Unreleased
 
+- Fix first release again
 
- ## 0.9.6
+## 0.9.6
 
 - Fix changelog heading
 
