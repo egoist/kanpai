@@ -85,6 +85,18 @@ You can config these properties in `package.json` for a single project:
 }
 ```
 
+## Keep a `CHANGELOG.md`
+
+You are recommended to update the `## Unreleased` section in `CHANGELOG.md` each time you add a new feature or bug fix to your project.
+
+And when you run `kp` to publish a release, it will look for `CHANGELOG.md` and update heading `## Unreleased` with new version, for example: `## 0.1.0`.
+
+## Create GitHub Releases
+
+Kanpai can also sync changelog in your `CHANGELOG.md` to GitHub Releases.
+
+After you publish a new version, you can use `kp gh-release` to create a new release for the latest version on GitHub.
+
 ## FAQ
 
 ### What if the `❯❯❯❯❯ PUBLISH` failed?

@@ -9,6 +9,7 @@
     "email": "0x142857@gmail.com",
     "url": "https://egoist.sh"
   },
+  "type": "module",
   "bin": {
     "kanpai": "./dist/cli.js",
     "kp": "./dist/cli.js"
@@ -31,6 +32,7 @@
   ],
   "devDependencies": {
     "@types/cross-spawn": "6.0.2",
+    "@types/marked": "^4.0.1",
     "@types/semver": "7.3.9",
     "@types/text-table": "0.2.2",
     "@types/update-notifier": "5.1.0",
@@ -44,9 +46,10 @@
     "execa": "6.0.0",
     "figures": "4.0.0",
     "log-symbols": "5.1.0",
+    "marked": "^4.0.8",
     "semver": "7.3.5",
     "text-table": "0.2.0",
-    "tsup": "5.11.9",
+    "tsup": "5.11.10",
     "typescript": "4.5.4",
     "update-notifier": "5.1.0",
     "write-pkg": "5.0.0"

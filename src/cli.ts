@@ -6,6 +6,7 @@ import semver from "semver";
 import { publish } from "./publish";
 import { config } from "./config";
 import { version } from "../package.json";
+import { ghRelease } from "./gh-release";
 
 const cli = cac();
 
@@ -80,6 +81,18 @@ cli
     } else {
       config.del(key);
     }
+  });
+
+cli
+  .command("gh-release [version]", "Update the GitHub Release changelog")
+  .option("--pre", "Mark as prerelease")
+  .option("--draft", "Mark as draft")
+  .action((version, flags) => {
+    return ghRelease({
+      version,
+      prerelease: flags.pre,
+      draft: flags.draft,
+    });
   });
 
 cli.version(version);

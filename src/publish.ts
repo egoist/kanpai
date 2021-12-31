@@ -11,6 +11,7 @@ import { writePackage } from "write-pkg";
 import { ensureGit } from "./ensure-git";
 import { config } from "./config";
 import { updateChangeLog } from "./changelog";
+import { getLatestTag } from "./git";
 
 function hr(text: string) {
   const char = colors.green(figures.pointer);
@@ -20,24 +21,6 @@ function hr(text: string) {
 function failed(status = 1) {
   console.log(colors.red(`${symbols.error} Failed to publish new version.`));
   process.exit(status);
-}
-
-async function getLatestTag(): Promise<string | null> {
-  try {
-    const { stdout } = await execa("git", ["describe", "--abbrev=0", "--tags"]);
-    return stdout;
-  } catch (error: any) {
-    if (
-      error.stderr &&
-      (error.stderr.includes("fatal: No tags can describe") ||
-        error.stderr.includes(
-          "fatal: No names found, cannot describe anything"
-        ))
-    ) {
-      return null;
-    }
-    throw error;
-  }
 }
 
 function readPkg() {
