@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/cross-spawn': 6.0.2
-  '@types/marked': ^4.0.1
+  '@types/marked': 4.0.1
   '@types/semver': 7.3.9
   '@types/text-table': 0.2.2
   '@types/update-notifier': 5.1.0
@@ -16,7 +16,7 @@ specifiers:
   execa: 6.0.0
   figures: 4.0.0
   log-symbols: 5.1.0
-  marked: ^4.0.8
+  marked: 4.0.8
   semver: 7.3.5
   text-table: 0.2.0
   tsup: 5.11.10
