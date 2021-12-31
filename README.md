@@ -38,10 +38,6 @@ $ kp [patch|minor|major|$version|pre$type]
 # custom test command, equal to npm run test:other
 $ kp --test test:other
 
-# only push to current working branch on remote
-# after runing test script
-$ kp --push-only
-
 # skip test script
 $ kp --skip-test
 
@@ -55,6 +51,9 @@ A common workflow:
 # after hack something...
 $ git commit -am "change the world"
 $ kp
+
+# On CI
+$ kp release
 ```
 
 ## Config
@@ -101,12 +100,6 @@ No unreleased changes.
 As you can see this file also includes an "Unreleased" section, and upon running `kp` the content will be automatically replaced by the commit messages since last release, and the heading `## Unreleased` will be updated to the actual version number.
 
 You can also write the "Unreleased" section manually, the content will only be replaced by commit messages if the heading is followed by nothing or another h2 heading. In this case only the heading will be replaced.
-
-## Create GitHub Releases
-
-Kanpai can also sync changelog in your `CHANGELOG.md` to GitHub Releases.
-
-After you publish a new version, you can use `kp gh-release` to create a new release for the latest version on GitHub.
 
 ## FAQ
 
