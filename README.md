@@ -12,13 +12,14 @@
 
 **No black magic**. In [semantic-release](https://github.com/semantic-release/semantic-release) you don't have full control of project publish, `semantic-release` smartly analyze your commits and publish the corresponding new version.
 
-While `kanpai` is, following this procedure:
+While using `kanpai` (shortened to `kp`), you specify the version to publish instead. By running `kp [patch|minor|major|x.y.z]`, it does following things:
 
 - Check git status, see if you have committed the changes and if the remote history differs.
-- Run tests, `npm test` by default, or `npm run kanpai` if this exists
-- Update package version, add git tag as well
-- Publish to NPM
+- Run tests, `npm test` by default.
+- Update package version, `CHANGELOG.md`, create git tag as well.
 - Push to remote git server
+
+After that, you can publish the npm package and create GitHub Release with the `kp release` command. And this step can be automated via CI like GitHub Actions and CircleCI.
 
 ## Install
 
@@ -32,8 +33,6 @@ $ yarn global add kanpai
 ## Usage
 
 ```bash
-# default type is `patch`
-$ kp
 $ kp [patch|minor|major|$version|pre$type]
 
 # custom test command, equal to npm run test:other
@@ -99,27 +98,12 @@ After you publish a new version, you can use `kp gh-release` to create a new rel
 
 ## FAQ
 
-### What if the `❯❯❯❯❯ PUBLISH` failed?
-
-<img src="./media/faq1.png" alt="failed" width="500">
-
-You can manually publish it when you fixed the issue:
-
-```bash
-npm publish
-git push --follow-tags
-```
-
 ### fatal: no upstream configured for branch 'master'
 
 Two options:
 
 a) `git branch --set-upstream-to=origin/master master` and then run `git push`<br>
 b) `git push -u origin master`
-
-## Preview
-
-[![asciicast](https://asciinema.org/a/aor622qgr9vplsq48rmkxzqxn.png)](https://asciinema.org/a/aor622qgr9vplsq48rmkxzqxn)
 
 ## License
 
