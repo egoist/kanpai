@@ -23,8 +23,8 @@ export const updateChangeLog = (newVersion: string, defaultChangelog = "") => {
     FILE_NAME,
     content.replace(
       /^##\s+Unreleased$/m,
-      `## Unreleased\n\n\n## ${newVersion}${
-        changelog ? "" : `\n\n${defaultChangelog}\n\n`
+      `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}${
+        changelog ? "" : `\n\n${defaultChangelog}`
       }`
     ),
     "utf8"

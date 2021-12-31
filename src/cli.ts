@@ -93,12 +93,16 @@ cli
   .option("-c, --channel <channel>", 'Release channel (defaults to "latest")')
   .option("--dry-run", "Run the command without actually publishing")
   .option("--draft", "Create the GitHub release as a draft")
+  .option("--skip-npm", "Skip npm publish")
+  .option("--skip-github", "Skip GitHub Release")
   .action((flags) => {
     return release({
       prerelease: flags.pre,
       draft: flags.draft,
       dryRun: flags.dryRun,
       channel: flags.channel,
+      skipNpm: flags.skipNpm,
+      skipGitHub: flags.skipGitHub,
     });
   });
 

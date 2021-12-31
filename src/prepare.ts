@@ -56,27 +56,28 @@ export async function prepare(
 
   const latestTag = await getLatestTag();
   let defaultChangelog = "";
-  if (latestTag) {
-    hr(`COMMITS SINCE ${latestTag}`);
-    const commits = await commitsBetween({ from: latestTag });
-    if (commits.length === 0) {
-      console.log(
-        `You haven't made any changes since last release (${latestTag}), aborted.`
-      );
-      failed();
-    }
+
+  hr(latestTag ? `COMMITS` : `COMMITS SINCE ${latestTag}`);
+  const commits = await commitsBetween({ from: latestTag || undefined });
+  if (commits.length === 0) {
     console.log(
-      table(
-        commits.map((commit) => {
-          return [
-            `${figures.arrowRight} ${commit.subject}`,
-            colors.dim(commit.author.date.toString()),
-          ];
-        })
-      )
+      `You haven't made any changes since last release (${latestTag}), aborted.`
     );
-    defaultChangelog = commits.map((c) => c.subject).join("\n");
-  } else {
+    failed();
+  }
+  console.log(
+    table(
+      commits.map((commit) => {
+        return [
+          `${figures.arrowRight} ${commit.subject}`,
+          colors.dim(commit.author.date.toString()),
+        ];
+      })
+    )
+  );
+  defaultChangelog = commits.map((c) => `- ${c.subject}`).join("\n");
+
+  if (!latestTag) {
     console.log(
       "It seems to be your first time to publish a new release, not bad."
     );

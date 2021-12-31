@@ -6,23 +6,29 @@ export const release = async (options: {
   dryRun?: boolean;
   prerelease?: boolean;
   draft?: boolean;
+  skipNpm?: boolean;
+  skipGitHub?: boolean;
 }) => {
   hr("NPM PUBLISH");
 
-  const npmOptions = ["publish"];
-  if (options.channel) {
-    npmOptions.push("--tag", options.channel);
+  if (!options.skipNpm) {
+    const npmOptions = ["publish"];
+    if (options.channel) {
+      npmOptions.push("--tag", options.channel);
+    }
+    await runCommandWithSideEffects("npm", npmOptions, options.dryRun);
   }
-  await runCommandWithSideEffects("npm", npmOptions, options.dryRun);
 
   hr("GITHUB RELEASE");
 
-  const ghReleaseInfo = await prepareGhRelease();
-  if (!options.dryRun) {
-    await ghRelease({
-      ...ghReleaseInfo,
-      prerelease: options.prerelease,
-      draft: options.draft,
-    });
+  if (!options.skipGitHub) {
+    const ghReleaseInfo = await prepareGhRelease();
+    if (!options.dryRun) {
+      await ghRelease({
+        ...ghReleaseInfo,
+        prerelease: options.prerelease,
+        draft: options.draft,
+      });
+    }
   }
 };
