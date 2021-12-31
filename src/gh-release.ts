@@ -96,6 +96,7 @@ export const ghRelease = async ({
         tag_name: `v${version}`,
         repo: repo.repo,
         owner: repo.owner,
+        body: changelog,
       },
     }
   );

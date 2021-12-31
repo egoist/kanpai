@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Missing changelog body on GitHub Releases.
 
 ## 0.9.8
 
