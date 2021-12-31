@@ -1,6 +1,9 @@
 import { execa } from "execa";
 import semver from "semver";
-import { getChangeLogByVersion, readChangeLogFile } from "./changelog";
+import {
+  getSectionBelowHeadingInMarkdown,
+  readChangeLogFile,
+} from "./changelog";
 import { getLatestTag } from "./git";
 import { request, NotFoundError } from "./request";
 
@@ -59,7 +62,7 @@ export const prepareGhRelease = async (version?: string) => {
   let changelog: string | undefined;
   const changelogFile = readChangeLogFile();
   if (changelogFile) {
-    changelog = getChangeLogByVersion(changelogFile, version);
+    changelog = getSectionBelowHeadingInMarkdown(changelogFile, version);
   }
 
   if (!changelog) {

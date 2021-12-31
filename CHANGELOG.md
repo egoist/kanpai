@@ -1,6 +1,7 @@
 ## Unreleased
 
 - Move `npm publish` and `kp gh-release` to a standalone command: `kp release`, now running `kp` will only update `package.json`, create git tag and push to GitHub. `kp release` is used to actually publish on npm and create release on GitHub, this step could be automated via CI instead, env variables `GITHUB_TOKEN` and `NPM_TOKEN` are required for this to work.
+- Generate default changelog from commit messages.
 
 ## 0.9.9
 

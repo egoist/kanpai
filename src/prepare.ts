@@ -55,6 +55,7 @@ export async function prepare(
   }
 
   const latestTag = await getLatestTag();
+  let defaultChangelog = "";
   if (latestTag) {
     hr(`COMMITS SINCE ${latestTag}`);
     const commits = await commitsBetween({ from: latestTag });
@@ -74,6 +75,7 @@ export async function prepare(
         })
       )
     );
+    defaultChangelog = commits.map((c) => c.subject).join("\n");
   } else {
     console.log(
       "It seems to be your first time to publish a new release, not bad."
@@ -115,7 +117,7 @@ export async function prepare(
 
   // Update changelog file
   if (!options.dryRun) {
-    updateChangeLog(newVersion);
+    updateChangeLog(newVersion, defaultChangelog);
   }
 
   // Commit and tag
