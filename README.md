@@ -86,9 +86,21 @@ You can config these properties in `package.json` for a single project:
 
 ## Keep a `CHANGELOG.md`
 
-You are recommended to update the `## Unreleased` section in `CHANGELOG.md` each time you add a new feature or bug fix to your project.
+Running `kp` will also generate a `CHANGELOG.md` file, which will include the changes since last release:
 
-And when you run `kp` to publish a release, it will look for `CHANGELOG.md` and update heading `## Unreleased` with new version, for example: `## 0.1.0`.
+```markdown
+## Unreleased
+
+No unreleased changes.
+
+## 0.1.0
+
+- Some commit message
+```
+
+As you can see this file also includes an "Unreleased" section, and upon running `kp` the content will be automatically replaced by the commit messages since last release, and the heading `## Unreleased` will be updated to the actual version number.
+
+You can also write the "Unreleased" section manually, the content will only be replaced by commit messages if the heading is followed by nothing or another h2 heading. In this case only the heading will be replaced.
 
 ## Create GitHub Releases
 
