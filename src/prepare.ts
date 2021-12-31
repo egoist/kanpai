@@ -12,14 +12,9 @@ import { ensureGit } from "./ensure-git";
 import { config } from "./config";
 import { updateChangeLog } from "./changelog";
 import { getLatestTag } from "./git";
-
-function hr(text: string) {
-  const char = colors.green(figures.pointer);
-  console.log(`${char.repeat(5)} ${colors.bold(text)}`);
-}
+import { hr, runCommandWithSideEffects } from "./utils";
 
 function failed(status = 1) {
-  console.log(colors.red(`${symbols.error} Failed to publish new version.`));
   process.exit(status);
 }
 
@@ -35,29 +30,15 @@ function readPkg() {
   };
 }
 
-function runCommandWithSideEffects(
-  command: string,
-  args: string[],
-  dryRun?: boolean
-) {
-  if (dryRun) {
-    console.log(`Dry run: ${command} ${args.join(" ")}`);
-    return;
-  }
-  return execa(command, args, { stdio: "inherit" });
-}
-
-export async function publish(
+export async function prepare(
   type: string,
   options: {
     anyBranch?: boolean;
-    pushOnly?: boolean;
     skipTest?: boolean;
     commitMessage?: string;
     test?: string;
-    next?: boolean;
-    channel?: string;
     dryRun?: boolean;
+    channel?: string;
   }
 ) {
   const pkg = readPkg();
@@ -107,62 +88,52 @@ export async function publish(
     await execa("npm", ["run", testCommand], { stdio: "inherit" });
   }
 
-  if (!options.pushOnly) {
-    hr("VERSION");
-    const commitMessage = options.commitMessage || config.get("commitMessage");
-    const newVersion =
-      semver.valid(type) ||
-      semver.inc(
-        pkg.data.version,
-        type as any,
-        options.channel === "latest" ? "" : options.channel
-      );
-    if (!newVersion) {
-      console.error(
-        colors.red(`Could not bump version to ${type} from ${pkg.data.version}`)
-      );
-      return failed();
-    }
-
-    console.log(`Next version: ${newVersion}`);
-
-    // Update version in package.json
-    if (!options.dryRun) {
-      const newPkg = { ...pkg.data };
-      newPkg.version = newVersion;
-      await writePackage(pkg.path, newPkg);
-    }
-
-    // Update changelog file
-    if (!options.dryRun) {
-      updateChangeLog(newVersion);
-    }
-
-    // Commit and tag
-    await runCommandWithSideEffects(
-      "git",
-      ["add", "package.json", "CHANGELOG.md"],
-      options.dryRun
+  hr("VERSION");
+  const commitMessage = options.commitMessage || config.get("commitMessage");
+  const newVersion =
+    semver.valid(type) ||
+    semver.inc(
+      pkg.data.version,
+      type as any,
+      options.channel === "latest" ? "" : options.channel
     );
-    await runCommandWithSideEffects(
-      "git",
-      ["commit", "-m", commitMessage.replace("%s", newVersion)],
-      options.dryRun
+  if (!newVersion) {
+    console.error(
+      colors.red(`Could not bump version to ${type} from ${pkg.data.version}`)
     );
-    await runCommandWithSideEffects(
-      "git",
-      ["tag", `v${newVersion}`, `-m`, `v${newVersion}`],
-      options.dryRun
-    );
-
-    hr("PUBLISH");
-    const npmOptions = ["publish"];
-    if (options.channel) {
-      npmOptions.push("--tag", options.channel);
-    }
-    await runCommandWithSideEffects("npm", npmOptions, options.dryRun);
-    // TODO: revert the commit and git tag when publish failed
+    return failed();
   }
+
+  console.log(`Next version: ${newVersion}`);
+
+  // Update version in package.json
+  if (!options.dryRun) {
+    const newPkg = { ...pkg.data };
+    newPkg.version = newVersion;
+    await writePackage(pkg.path, newPkg);
+  }
+
+  // Update changelog file
+  if (!options.dryRun) {
+    updateChangeLog(newVersion);
+  }
+
+  // Commit and tag
+  await runCommandWithSideEffects(
+    "git",
+    ["add", "package.json", "CHANGELOG.md"],
+    options.dryRun
+  );
+  await runCommandWithSideEffects(
+    "git",
+    ["commit", "-m", commitMessage.replace("%s", newVersion)],
+    options.dryRun
+  );
+  await runCommandWithSideEffects(
+    "git",
+    ["tag", `v${newVersion}`, `-m`, `v${newVersion}`],
+    options.dryRun
+  );
 
   hr("PUSH");
   await runCommandWithSideEffects(

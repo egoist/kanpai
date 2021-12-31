@@ -3,17 +3,20 @@ import { cac } from "cac";
 import table from "text-table";
 import * as colors from "colorette";
 import semver from "semver";
-import { publish } from "./publish";
+import { prepare } from "./prepare";
 import { config } from "./config";
 import { version } from "../package.json";
 import { ghRelease } from "./gh-release";
+import { release } from "./release";
 
 const cli = cac();
 
 cli
-  .command("[version]", "Publish a new version")
-  .option("--any-branch", "Publish from any branch")
-  .option("--push-only", "Push to remote only")
+  .command(
+    "[version]",
+    "Update package.json, create git tag and update CHANGELOG.md"
+  )
+  .option("--any-branch", "Allow running under any branch")
   .option("--skip-test", "Skip test")
   .option("-m, --message, --commit-message <message>", "Commit message")
   .option(
@@ -45,7 +48,7 @@ cli
     ];
 
     if (semver.valid(version) || allTypes.indexOf(version) > -1) {
-      await publish(version, options);
+      await prepare(version, options);
     } else {
       console.log(colors.red("> Invalid version."));
       process.exit(1);
@@ -84,14 +87,18 @@ cli
   });
 
 cli
-  .command("gh-release [version]", "Update the GitHub Release changelog")
+  .command("release", "Run npm publish and create GitHub release")
   .option("--pre", "Mark as prerelease")
   .option("--draft", "Mark as draft")
-  .action((version, flags) => {
-    return ghRelease({
-      version,
+  .option("-c, --channel <channel>", 'Release channel (defaults to "latest")')
+  .option("--dry-run", "Run the command without actually publishing")
+  .option("--draft", "Create the GitHub release as a draft")
+  .action((flags) => {
+    return release({
       prerelease: flags.pre,
       draft: flags.draft,
+      dryRun: flags.dryRun,
+      channel: flags.channel,
     });
   });
 

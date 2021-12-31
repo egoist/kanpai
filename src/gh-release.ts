@@ -39,15 +39,7 @@ const getReleaseByTag = (
   });
 };
 
-export const ghRelease = async ({
-  version,
-  prerelease,
-  draft,
-}: {
-  version: string | undefined;
-  prerelease?: boolean;
-  draft?: boolean;
-}) => {
+export const prepareGhRelease = async (version?: string) => {
   if (!githubToken) {
     throw new Error("GITHUB_TOKEN env variable is not set");
   }
@@ -77,6 +69,23 @@ export const ghRelease = async ({
   }
 
   const repo = await getRepo();
+
+  return { changelog, repo, version };
+};
+
+export const ghRelease = async ({
+  changelog,
+  version,
+  prerelease,
+  draft,
+  repo,
+}: {
+  changelog: string;
+  version: string;
+  prerelease?: boolean;
+  draft?: boolean;
+  repo: { owner: string; repo: string };
+}) => {
   let release = await getReleaseByTag(`v${version}`, repo);
 
   console.log(`${release ? "Updating" : "Creating"} release for v${version}`);
