@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+## 0.9.8
+
 - Add `kp gh-release` command to publish a new release on GitHub.
 - Migrate this package to esm format.
 
