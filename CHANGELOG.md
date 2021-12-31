@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+## 0.9.9
+
 - Missing changelog body on GitHub Releases.
 
 ## 0.9.8
