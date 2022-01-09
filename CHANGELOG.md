@@ -1,5 +1,9 @@
 ## Unreleased
 
+No unreleased changes.
+
+## 0.10.1
+
 - Support `HTTPS` git URL.
 
 ## 0.10.0
