@@ -11,7 +11,9 @@ const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 
 const getRepo = async () => {
   const { stdout } = await execa("git", ["remote", "get-url", "origin"]);
-  const m = stdout.match(/git@github.com:(.+)\.git/);
+  const m =
+    stdout.match(/git@github.com:(.+)\.git/) ||
+    stdout.replace(/.git$/, "").match(/https:\/\/github.com\/(.+)/);
   if (!m) {
     throw new Error(
       `Invalid git remote url: ${stdout}, expected something like git@github.com:owner/repo.git`
