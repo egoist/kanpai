@@ -46,7 +46,7 @@
     "execa": "6.0.0",
     "figures": "4.0.0",
     "log-symbols": "5.1.0",
-    "marked": "4.0.8",
+    "marked": "4.0.10",
     "semver": "7.3.5",
     "text-table": "0.2.0",
     "tsup": "5.11.10",
