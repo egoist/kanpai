@@ -16,7 +16,7 @@ specifiers:
   execa: 6.0.0
   figures: 4.0.0
   log-symbols: 5.1.0
-  marked: 4.0.10
+  marked: 4.0.12
   semver: 7.3.5
   text-table: 0.2.0
   tsup: 5.11.11
@@ -40,7 +40,7 @@ devDependencies:
   execa: 6.0.0
   figures: 4.0.0
   log-symbols: 5.1.0
-  marked: 4.0.10
+  marked: 4.0.12
   semver: 7.3.5
   text-table: 0.2.0
   tsup: 5.11.11_typescript@4.5.5
@@ -1148,8 +1148,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /marked/4.0.10:
-    resolution: {integrity: sha512-+QvuFj0nGgO970fySghXGmuw+Fd0gD2x3+MqCWLIPf5oxdv1Ka6b2q+z9RP01P/IaKPMEramy+7cNy/Lw8c3hw==}
+  /marked/4.0.12:
+    resolution: {integrity: sha512-hgibXWrEDNBWgGiK18j/4lkS6ihTe9sxtV4Q1OQppb/0zzyPSzoFANBa5MfsG/zgsWklmNnhm0XACZOH/0HBiQ==}
     engines: {node: '>= 12'}
     hasBin: true
     dev: true
