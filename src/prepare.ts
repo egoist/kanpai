@@ -50,8 +50,12 @@ export async function prepare(
       anyBranch: options.anyBranch,
     });
     console.log("No conflicts!");
-  } catch (err: any) {
-    console.error(err.message);
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error(err.message);
+    } else {
+      console.error(err);
+    }
     failed();
   }
 
@@ -97,7 +101,7 @@ export async function prepare(
     semver.valid(type) ||
     semver.inc(
       pkg.data.version,
-      type as any,
+      type as semver.ReleaseType,
       options.channel === "latest" ? "" : options.channel
     );
   if (!newVersion) {

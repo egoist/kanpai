@@ -31,7 +31,6 @@
     "publish"
   ],
   "devDependencies": {
-    "@types/cross-spawn": "6.0.2",
     "@types/marked": "4.0.1",
     "@types/semver": "7.3.9",
     "@types/text-table": "0.2.2",

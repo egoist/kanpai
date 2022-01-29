@@ -36,7 +36,7 @@ const getReleaseByTag = (
         authorization: `token ${githubToken}`,
       },
     }
-  ).catch((error: any) => {
+  ).catch((error: unknown) => {
     if (error instanceof NotFoundError) {
       return null;
     }
@@ -91,7 +91,7 @@ export const ghRelease = async ({
   draft?: boolean;
   repo: { owner: string; repo: string };
 }) => {
-  let release = await getReleaseByTag(`v${version}`, repo);
+  const release = await getReleaseByTag(`v${version}`, repo);
 
   console.log(`${release ? "Updating" : "Creating"} release for v${version}`);
 

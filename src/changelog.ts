@@ -4,7 +4,7 @@ import { Lexer, marked } from "marked";
 const FILE_NAME = "CHANGELOG.md";
 
 const getHeadingText = (token: marked.Tokens.Heading) => {
-  // @ts-expect-error
+  // @ts-expect-error some tokens don't have a text property?
   return token.tokens.map((t) => t.text || t.raw).join("");
 };
 
