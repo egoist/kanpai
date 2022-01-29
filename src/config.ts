@@ -1,50 +1,26 @@
-import path from "path";
-import envPaths from "env-paths";
-import fs from "fs";
-import { defineConfig } from "tsup";
+import JoyCon from "joycon";
 
-const defaultConfig = { commitMessage: "Release %s", test: "test" };
-
-const configDir = envPaths("kanpai").config;
-const configFile = path.join(configDir, "config.json");
-
-const readConfig = () => {
-  if (!fs.existsSync(configFile)) {
-    return { ...defaultConfig };
-  }
-  return {
-    ...defineConfig,
-    ...JSON.parse(fs.readFileSync(configFile, "utf8")),
-  };
+type Config = {
+  test?: string;
+  commitMessage?: string;
 };
 
-const createConfig = () => {
-  let configCache: Record<string, any> | undefined;
+export function getConfig(cwd: string): {
+  config: Config;
+  path?: string;
+} {
+  const joycon = new JoyCon({
+    files: ["package.json", "kanpai.json"],
+    cwd,
+    packageKey: "kanpai",
+  });
 
-  try {
-    fs.mkdirSync(configDir, { recursive: true });
-  } catch (_) {}
+  const { data, path } = joycon.loadSync();
 
   return {
-    get all() {
-      configCache = configCache || readConfig();
-      return configCache!;
+    config: {
+      ...data,
     },
-    get(key: string): any {
-      configCache = configCache || readConfig();
-      return configCache![key];
-    },
-    set(key: string, value: string | number | boolean) {
-      configCache = configCache || readConfig();
-      configCache![key] = value;
-      fs.writeFileSync(configFile, JSON.stringify(configCache), "utf8");
-    },
-    del(key: string) {
-      configCache = configCache || readConfig();
-      delete configCache![key];
-      fs.writeFileSync(configFile, JSON.stringify(configCache), "utf8");
-    },
+    path,
   };
-};
-
-export const config = createConfig();
+}

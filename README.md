@@ -58,28 +58,12 @@ $ kp release
 
 ## Config
 
-You can use command-line to set and get config globally:
-
-```bash
-$ kp get
-$ kp get test
-
-# update test
-$ kp set test custom-test-script
-
-# update the commit message when running `npm version `
-# %s will be replaced by version number, eg: 0.1.0
-$ kp set commitMessage "Release version %s"
-```
-
-You can config these properties in `package.json` for a single project:
+Some CLI flags can be configured via `kanpai.json` file:
 
 ```
 {
-  "kanpai": {
-    "test": "lint", // custom test script => npm run lint
+  "test": "lint", // custom test script => npm run lint
     "commitMessage": "Release version %s"
-  }
 }
 ```
 

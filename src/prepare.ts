@@ -9,10 +9,10 @@ import * as colors from "colorette";
 import semver from "semver";
 import { writePackage } from "write-pkg";
 import { ensureGit } from "./ensure-git";
-import { config } from "./config";
 import { updateChangeLog } from "./changelog";
 import { getLatestTag } from "./git";
 import { hr, runCommandWithSideEffects } from "./utils";
+import { getConfig } from "./config";
 
 function failed(status = 1) {
   process.exit(status);
@@ -42,7 +42,8 @@ export async function prepare(
   }
 ) {
   const pkg = readPkg();
-  const kanpai = pkg.data.kanpai || {};
+  const { config } = getConfig(process.cwd());
+
   hr("CHECK GIT");
   try {
     await ensureGit({
@@ -85,14 +86,13 @@ export async function prepare(
 
   if (!options.skipTest) {
     hr("TEST");
-    const defaultTest = kanpai.scripts && kanpai.scripts.kanpai;
-    const testCommand =
-      options.test || kanpai.test || defaultTest || config.get("test");
+    const testCommand = options.test || config.test || "test";
     await execa("npm", ["run", testCommand], { stdio: "inherit" });
   }
 
   hr("VERSION");
-  const commitMessage = options.commitMessage || config.get("commitMessage");
+  const commitMessage =
+    options.commitMessage || config.commitMessage || "Release v%s";
   const newVersion =
     semver.valid(type) ||
     semver.inc(

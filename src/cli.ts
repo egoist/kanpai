@@ -1,15 +1,12 @@
 #!/usr/bin/env node
 import { cac } from "cac";
-import table from "text-table";
 import * as colors from "colorette";
 import semver from "semver";
 import { prepare } from "./prepare";
-import { config } from "./config";
 import { version } from "../package.json";
-import { ghRelease } from "./gh-release";
 import { release } from "./release";
 
-const cli = cac();
+const cli = cac("kanpai");
 
 cli
   .command(
@@ -52,37 +49,6 @@ cli
     } else {
       console.log(colors.red("> Invalid version."));
       process.exit(1);
-    }
-  });
-
-cli
-  .command("get [key]", "Get config value")
-  .action((key: string | undefined) => {
-    const all = config.all;
-    if (key) {
-      if (!all[key]) {
-        return console.log(
-          colors.red(`Cannot find property ${colors.underline(key)}.`)
-        );
-      }
-      return console.log(all[key]);
-    }
-    console.log(
-      table(
-        Object.keys(all).map((key) => {
-          return [key, all[key].green];
-        })
-      )
-    );
-  });
-
-cli
-  .command("set <key> [value]", "Set config value")
-  .action((key: string, value: string | undefined) => {
-    if (value) {
-      config.set(key, value);
-    } else {
-      config.del(key);
     }
   });
 
