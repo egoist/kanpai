@@ -50,6 +50,6 @@
     "tsup": "5.11.11",
     "typescript": "4.5.5",
     "update-notifier": "5.1.0",
-    "write-pkg": "5.0.0"
+    "write-pkg": "5.1.0"
   }
 }

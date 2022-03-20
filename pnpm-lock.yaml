@@ -20,7 +20,7 @@ specifiers:
   tsup: 5.11.11
   typescript: 4.5.5
   update-notifier: 5.1.0
-  write-pkg: 5.0.0
+  write-pkg: 5.1.0
 
 devDependencies:
   '@types/marked': 4.0.1
@@ -42,7 +42,7 @@ devDependencies:
   tsup: 5.11.11_typescript@4.5.5
   typescript: 4.5.5
   update-notifier: 5.1.0
-  write-pkg: 5.0.0
+  write-pkg: 5.1.0
 
 packages:
 
@@ -1592,8 +1592,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/2.8.0:
-    resolution: {integrity: sha512-O+V9pAshf9C6loGaH0idwsmugI2LxVNR7DtS40gVo2EXZVYFgz9OuNtOhgHLdHdapOEWNdvz9Ob/eeuaWwwlxA==}
+  /type-fest/2.12.1:
+    resolution: {integrity: sha512-AiknQSEqKVGDDjtZqeKrUoTlcj7FKhupmnVUgz6KoOKtvMwRGE6hUNJ/nVear+h7fnUPO1q/htSkYKb1pyntkQ==}
     engines: {node: '>=12.20'}
     dev: true
 
@@ -1708,12 +1708,12 @@ packages:
       write-file-atomic: 3.0.3
     dev: true
 
-  /write-pkg/5.0.0:
-    resolution: {integrity: sha512-ihflUwZ8WvVcXD2uhk4JAAe5+x9FT+0n4Z5b/OMZXBG8/hXCvSQXTYDf9raox0aqJGWRBipIE4rWSi6aCaiebw==}
+  /write-pkg/5.1.0:
+    resolution: {integrity: sha512-2LnW2htVtTQuLV/5JGaz09jTAE/Gv/lhy36xwxx1x22y+AnG9/YnIoDmA1Q8pooDnLO4vYLBCqO9g/qOdMZMPA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       sort-keys: 5.0.0
-      type-fest: 2.8.0
+      type-fest: 2.12.1
       write-json-file: 5.0.0
     dev: true
 
