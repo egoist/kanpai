@@ -11,7 +11,7 @@ specifiers:
   configstore: 6.0.0
   ensure-git: 0.1.0
   execa: 6.0.0
-  figures: 4.0.0
+  figures: 4.0.1
   joycon: 3.1.1
   log-symbols: 5.1.0
   marked: 4.0.12
@@ -33,7 +33,7 @@ devDependencies:
   configstore: 6.0.0
   ensure-git: 0.1.0
   execa: 6.0.0
-  figures: 4.0.0
+  figures: 4.0.1
   joycon: 3.1.1
   log-symbols: 5.1.0
   marked: 4.0.12
@@ -685,12 +685,12 @@ packages:
       reusify: 1.0.4
     dev: true
 
-  /figures/4.0.0:
-    resolution: {integrity: sha512-VnYcWq6H6F0qDN0QnorznBr0abEovifzUokmnezpKZBUbDmbLAt7LMryOp1TKFVxLxyNYkxEkCEADZR58U9oSw==}
+  /figures/4.0.1:
+    resolution: {integrity: sha512-rElJwkA/xS04Vfg+CaZodpso7VqBknOYbzi6I76hI4X80RUjkSxO2oAyPmGbuXUppywjqndOrQDl817hDnI++w==}
     engines: {node: '>=12'}
     dependencies:
       escape-string-regexp: 5.0.0
-      is-unicode-supported: 1.1.0
+      is-unicode-supported: 1.2.0
     dev: true
 
   /fill-range/7.0.1:
@@ -966,6 +966,11 @@ packages:
 
   /is-unicode-supported/1.1.0:
     resolution: {integrity: sha512-lDcxivp8TJpLG75/DpatAqNzOpDPSpED8XNtrpBHTdQ2InQ1PbW78jhwSxyxhhu+xbVSast2X38bwj8atwoUQA==}
+    engines: {node: '>=12'}
+    dev: true
+
+  /is-unicode-supported/1.2.0:
+    resolution: {integrity: sha512-wH+U77omcRzevfIG8dDhTS0V9zZyweakfD01FULl97+0EHiJTTZtJqxPSkIIo/SDPv/i07k/C9jAPY+jwLLeUQ==}
     engines: {node: '>=12'}
     dev: true
 
