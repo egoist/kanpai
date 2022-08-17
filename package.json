@@ -32,6 +32,7 @@
   ],
   "devDependencies": {
     "@types/marked": "4.0.1",
+    "@types/node": "^18.7.6",
     "@types/semver": "7.3.9",
     "@types/text-table": "0.2.2",
     "@types/update-notifier": "5.1.0",
