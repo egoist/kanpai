@@ -19,12 +19,14 @@ export const updateChangeLog = (newVersion: string, defaultChangelog = "") => {
     "Unreleased"
   ).trim();
 
+  const haveChangelog = Boolean(changelog && !changelog.includes('No unreleased changes.'))
+
   fs.writeFileSync(
     FILE_NAME,
     content.replace(
       /^##\s+Unreleased$/m,
       `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}${
-        changelog ? "" : `\n\n${defaultChangelog}`
+        haveChangelog ? changelog : `\n\n${defaultChangelog}`
       }`
     ),
     "utf8"
