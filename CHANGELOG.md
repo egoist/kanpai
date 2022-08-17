@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+No unreleased changes.
+
+## 0.11.0
+
 - Removed `kp get` and `kp set` commands, basically we removed the global config. Config can only be done via `kanpai.json` or the `kanpai` field in `package.json`.
 - Fix: populate changelog with git commit history when there's no manually added changelog, by @LittleSound via #32
 
