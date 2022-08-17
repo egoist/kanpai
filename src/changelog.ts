@@ -17,16 +17,23 @@ export const updateChangeLog = (newVersion: string, defaultChangelog = "") => {
   const changelog = getSectionBelowHeadingInMarkdown(
     content,
     "Unreleased"
-  ).trim();
+  )
+
+  const haveChangelog = Boolean(changelog.trim() && !changelog.includes('No unreleased changes.'))
+
+  const newContent = haveChangelog
+    ? content.replace(
+      /^##\s+Unreleased$/m,
+      `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}`
+    )
+    : content.replace(
+      /^##\s+Unreleased$\n(\S|\s)+?(?=^##)/m,
+      `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}\n\n${defaultChangelog}\n\n`
+    )
 
   fs.writeFileSync(
     FILE_NAME,
-    content.replace(
-      /^##\s+Unreleased$/m,
-      `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}${
-        changelog ? "" : `\n\n${defaultChangelog}`
-      }`
-    ),
+    newContent,
     "utf8"
   );
 };
