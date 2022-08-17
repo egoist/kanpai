@@ -26,7 +26,7 @@ export const updateChangeLog = (newVersion: string, defaultChangelog = "") => {
     content.replace(
       /^##\s+Unreleased$/m,
       `## Unreleased\n\nNo unreleased changes.\n\n## ${newVersion}${
-        haveChangelog ? changelog : `\n\n${defaultChangelog}`
+        haveChangelog ? "" : `\n\n${defaultChangelog}`
       }`
     ),
     "utf8"
